@@ -48,7 +48,7 @@ const reboot = () => {
       </a-row>
       <a-row :gutter="[16, 16]" class="bottomRow">
         <a-col :span="24">
-          <LogArea/>
+          <LogArea />
         </a-col>
       </a-row>
     </a-layout-content>
@@ -56,7 +56,7 @@ const reboot = () => {
   </div>
 </template>
 
-<style>
+<style lang="css">
 
 .bottomRow {
   margin-top: 2vh;

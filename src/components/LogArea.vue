@@ -8,11 +8,11 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 import * as Stomp from 'stompjs/index'
-// import  SockJS from 'sockjs-client'
-import * as SockJS from 'sockjs-client/dist/sockjs.min'
+ import  SockJS from 'sockjs-client'
+//import * as SockJS from 'sockjs-client/dist/sockjs.min'
 import {reactive, ref, toRaw} from "vue";
 import axios from "axios";
 import {getCurrentInstance} from "vue";
@@ -20,12 +20,12 @@ import {getCurrentInstance} from "vue";
 
 const appHost = getCurrentInstance()?.appContext.config.globalProperties.$appHost
 const logText = ref('');
-let stompClient = null;
+
 connectWebSocket();
 function connectWebSocket() {
   const url = `http://${appHost}/get-logs-websocket`;
   let socket = new SockJS(url);
-  stompClient = Stomp.over(socket);
+ let stompClient = Stomp.over(socket);
   stompClient.connect({}, function (frame) {
     console.log('Connected: ' + frame);
     logText.value = new Date().toLocaleString('lt-LT') + " :服务器连接成功\n"
