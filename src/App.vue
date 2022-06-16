@@ -4,20 +4,8 @@
 import DataSourceArea from "./components/DataSourceArea.vue";
 import QuerySqlArea from "./components/QuerySqlArea.vue";
 import LogArea from "./components/LogArea.vue";
-import {RedoOutlined} from '@ant-design/icons-vue'
-import {getCurrentInstance, ref} from "vue";
-import axios from "axios";
-import {message} from "ant-design-vue";
+import TopButtons from "./components/TopButtons.vue";
 
-const appHost = getCurrentInstance()?.appContext.config.globalProperties.$appHost
-const rebootLoading = ref(false)
-const reboot = () => {
-  axios.get(`http://${appHost}/rest/reboot`).then((response: any) => {
-    if (response.data === 1)
-      message.success("重启成功");
-    else message.error("重启失败")
-  })
-}
 </script>
 
 <template>
@@ -25,17 +13,9 @@ const reboot = () => {
     <a-layout-header>
       <div>
         <h1 class="headerClass">动态多数据源控制台2.0
-          <a-button type="primary" style="float:right;z-index: 9999;margin-top: 2vh" :loading="rebootLoading"
-                    @click="reboot">
-            重启
-            <template #icon>
-              <redo-outlined/>
-            </template>
-          </a-button>
+        <TopButtons />
         </h1>
       </div>
-
-
     </a-layout-header>
     <a-layout-content>
       <a-row :gutter="[16, 16]">
@@ -63,6 +43,7 @@ const reboot = () => {
 }
 
 .headerClass {
+  position: relative;
   text-align: center;
   color: aliceblue;
 }

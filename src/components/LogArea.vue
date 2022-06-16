@@ -11,8 +11,8 @@
 <script setup lang="ts">
 
 import * as Stomp from 'stompjs/index'
- import  SockJS from 'sockjs-client'
-//import * as SockJS from 'sockjs-client/dist/sockjs.min'
+//import  SockJS from 'sockjs-client'
+import * as SockJS from 'sockjs-client/dist/sockjs.min'
 import {reactive, ref, toRaw} from "vue";
 import axios from "axios";
 import {getCurrentInstance} from "vue";
